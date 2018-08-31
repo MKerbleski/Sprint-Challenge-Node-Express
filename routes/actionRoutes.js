@@ -14,4 +14,12 @@ router.get('/', (req, res) => {
   })
 });
 
+router.get('/:id/', (req, res) => {
+  db.get(req.params.id).then(actions => {
+    res.status(200).json(actions)
+  }).catch(err => {
+    res.status(500).json(err)
+  })
+});
+
 module.exports = router;
