@@ -1,0 +1,25 @@
+{
+  "name": "Sprint-Challenge-Node-Express",
+  "version": "(1.0.0)",
+  "description": "sprint challenge",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": "https://github.com/MKerbleski/Sprint-Challenge-Node-Express.git",
+  "author": "mkerbleski <mkerbles@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.4",
+    "helmet": "^3.13.0",
+    "knex": "^0.15.2",
+    "morgan": "^1.9.0",
+    "sqlite3": "^4.0.2",
+    "styled-components": "^3.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+
+}
