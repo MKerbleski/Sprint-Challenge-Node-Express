@@ -1,10 +1,12 @@
 const express = require('express');
-
+const cors = require('cors');
 const router = express.Router();
 
-
 const db = require('../data/helpers/actionModel.js');
-router.use(express.json());
+
+// server.use(cors());
+
+
 
 router.get('/', (req, res) => {
   db.get().then(actions => {

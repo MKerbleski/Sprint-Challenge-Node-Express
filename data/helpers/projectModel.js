@@ -1,5 +1,10 @@
 const db = require('../dbConfig.js');
 const mappers = require('./mappers');
+const cors = require('cors');
+
+
+// server.use(cors());
+
 
 module.exports = {
   get: function(id) {

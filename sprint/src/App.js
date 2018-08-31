@@ -1,21 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import styled from 'styled-components';
+import axios from 'axios';
+// import cors from 'cors';
+
+
+
 
 class App extends Component {
+  state = {
+
+  }
+
+  componentDidMount(){
+    console.log("CDM")
+    axios.get('http://localhost:7000/projects').then(res => { console.log(res);
+      this.setState({
+        projects: res.data,
+      })
+    }).catch(err => console.log(err))
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <AppDiv>
+        <h1>div</h1>
+      </AppDiv>
     );
   }
 }
 
 export default App;
+
+const AppDiv = styled.div`
+    border: 3px solid red;
+`;
