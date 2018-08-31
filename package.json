@@ -3,9 +3,6 @@
   "version": "(1.0.0)",
   "description": "sprint challenge",
   "main": "server.js",
-  "scripts": {
-    "start": "nodemon"
-  },
   "repository": "https://github.com/MKerbleski/Sprint-Challenge-Node-Express.git",
   "author": "mkerbleski <mkerbles@gmail.com>",
   "license": "MIT",
