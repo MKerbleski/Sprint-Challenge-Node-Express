@@ -23,27 +23,33 @@ router.get('/:id/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  //if Id reject db will create automatically
-  //project idRequired  required must be id of existing project
-  //description required only up to 128characters
-  //notes required
-  //complete optional
-  db.insert(req.body).then(newProject  => {
-    res.status(200).json(newProject)
-  }).catch(err => {
-    res.status(500).json(err)
-  })
+  if (req.body.id){
+    res.status(400).json({message: "Please remove id and retry request."})
+  } else if (!req.body.project_id){
+    res.status(400).json({message: "Please include project Id and retry request."})
+  } else if (req.body.description.length > 128){
+    res.status(400).json({message: "Max description length is 128characters please modify and retry request."})
+  } else if (!req.body.notes) {
+    res.status(400).json({message: "Please include a notes section (can be empty) and retry request."})
+  } else {
+    db.insert(req.body).then(newProject  => {
+        res.status(200).json(newProject)
+      }).catch(err => {
+        res.status(500).json(err)
+      })
+  }
 });
 
-router.put('/:id/', (req, res) => {
-  //needs id to update else return null
-  //object with changes to apply
-  //reutrns updated object
-  db.update(req.params.id, req.body).then(projects  => {
-    res.status(200).json(projects)
-  }).catch(err => {
-    res.status(500).json(err)
-  })
+router.put('/', (req, res) => {
+  if (!req.body.id){
+    res.status(400).json({message: "Please include id and retry request."})
+  } else {
+    db.update(req.body.id, req.body).then(modifiedAction  => {
+      res.status(200).json(modifiedAction)
+    }).catch(err => {
+      res.status(500).json(err)
+    })
+  }
 });
 
 router.delete('/:id/', (req, res) => {
